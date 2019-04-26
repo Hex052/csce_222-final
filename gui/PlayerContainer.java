@@ -33,7 +33,10 @@ public class PlayerContainer extends JPanel {
 			setInitialImage(new File("img/piece/car.png"));
 		}
 		changeName = new JButton("Change Name");
+		changeName.setName(usr.name);
+		changeName.addActionListener(new gui.select.ChangeName());
 		changeImg = new JButton("Change Icon");
+		changeImg.setName(usr.name);
 		imgDisplay = new JLabel(beginImg);
 
 		top.setMaximumSize(maxTop);

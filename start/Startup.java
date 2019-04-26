@@ -98,4 +98,11 @@ public class Startup {
 		last.next = go;
 		go.prev = last;
 	}
+	public static input.Player findPlayer(String name) {
+		for (input.Player p : players) {
+			if (p.name.equals(name))
+				return p;
+		}
+		return null;
+	}
 }
