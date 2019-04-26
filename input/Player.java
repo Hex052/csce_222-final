@@ -87,11 +87,11 @@ public class Player {
 		for (int i : list) {
 			rolls = rolls + " " + i;
 		}
-		JOptionPane.showMessageDialog(null, "Rolling " + num + "D6:\n" + rolls + "\nTotalling " + tot, num + "D6", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(gui.MainFrame.frame, "Rolling " + num + "D6:\n" + rolls + "\nTotalling " + tot, "Roll " + num + "D6", JOptionPane.INFORMATION_MESSAGE);
 		return tot;
 	}
 	private static int rollSingleDie() {
-		return ((singleDie.nextInt() % 6) + 1);
+		return (java.lang.Math.abs((singleDie.nextInt() % 6)) + 1);
 	}
 	public String toString() {
 		return "Player \'" + name + "\' on square \'" + pos.name + "\' with $" + funds;
