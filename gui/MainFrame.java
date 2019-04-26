@@ -11,6 +11,7 @@ public class MainFrame extends JFrame {
 	public static PlayerPanel players = new PlayerPanel();
 	public static JPanel right = new JPanel();
 	public static MainFrame frame = null;
+	public static JFrame logFrame = new JFrame();
 
 	public MainFrame() {
 		frame = this;
@@ -22,7 +23,11 @@ public class MainFrame extends JFrame {
 		// getContentPane().add(right);
 		// right.add(log);
 		// right.add(players);
-		getContentPane().add(log);
+		logFrame.getContentPane().add(log);
+		logFrame.setTitle("Monopoly - Log");
+		logFrame.setVisible(true);
+		logFrame.setSize(300,600);
+		logFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE); //To ensure it isn't closed accidentally
 		getContentPane().add(players);
 
 		setSize(1240, 650);
@@ -30,4 +35,10 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		// setResizable(false);
 	}
+
+	public void setVisible(boolean b) {
+		super.setVisible(b);
+		logFrame.setVisible(b);
+	}
+
 }
