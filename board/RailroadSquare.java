@@ -10,16 +10,7 @@ public class RailroadSquare extends BuyableSquare {
 	}
 	public void land(input.Player usr) {
 		if (owner == null) {
-			if (usr.getFunds() < cost) {
-				JOptionPane.showMessageDialog(null, "Unaffordable", "You are unable to purcase " + name + " for " + cost + "since you do not have enough funds.", JOptionPane.WARNING_MESSAGE);
-				return;
-			}
-			int choice = JOptionPane.showConfirmDialog(null, "Purchase " + name, "Do you want to purchase " + name + " for " + cost + "?", JOptionPane.YES_NO_OPTION);
-			if (choice == JOptionPane.YES_OPTION) {
-				usr.charge(cost);
-				usr.railroadsOwned++;
-				owner = usr;
-			}
+			purchase(usr);
 		}
 		else if (!owner.equals(usr)) {
 			int owed = 25*(1<<(owner.railroadsOwned - 1));
