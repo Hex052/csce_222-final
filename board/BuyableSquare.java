@@ -18,17 +18,19 @@ public abstract class BuyableSquare extends Square {
 	public final void pass(input.Player usr) {
 		return;
 	}
-	public void purchase(input.Player usr) {
+	public boolean purchase(input.Player usr) {
 		if (usr.getFunds() < cost) {
 			JOptionPane.showMessageDialog(null, "You are unable to purcase " + name + " for " + cost + "since you do not have enough funds.", "Unaffordable", JOptionPane.WARNING_MESSAGE);
-			return;
+			return false;
 		}
 		int choice = JOptionPane.showConfirmDialog(null, "Purchase " + name, "Do you want to purchase " + name + " for " + cost + "?", JOptionPane.YES_NO_OPTION);
 		if (choice == JOptionPane.YES_OPTION) {
 			gui.LogPanel.write(usr.name + " purchased " + name + " for $" + cost);
 			usr.charge(cost);
 			owner = usr;
+			return true;
 		}
+		return false;
 	}
 	public void charge(input.Player usr, int amount) {
 		int charged = usr.charge(amount);

@@ -10,10 +10,11 @@ public class RailroadSquare extends BuyableSquare {
 	}
 	public void land(input.Player usr) {
 		if (owner == null) {
-			purchase(usr);
+			if(purchase(usr))
+				usr.railroadsOwned++;
 		}
 		else if (!owner.equals(usr)) {
-			int owed = 25*(1<<(owner.railroadsOwned - 1));
+			int owed = rent*(1<<(owner.railroadsOwned - 1));
 			charge(usr, owed);
 		}
 	}
