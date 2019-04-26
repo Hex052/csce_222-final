@@ -22,7 +22,7 @@ public class PlayerContainer extends JPanel {
 	public JLabel imgDisplay, name;
 	public JPanel top = new JPanel(), topRight = new JPanel();
 	public Dimension maxTop = new Dimension(450, 160);
-	public JButton changeName, changeImg;
+	public JButton changeName, changeImg, manageProp;
 
 	public PlayerContainer(input.Player player) {
 		usr = player;
@@ -38,6 +38,9 @@ public class PlayerContainer extends JPanel {
 		changeImg = new JButton("Change Icon");
 		changeImg.setName(usr.name);
 		imgDisplay = new JLabel(beginImg);
+		manageProp = new JButton("Manage Properties");
+		manageProp.setName(usr.name);
+		manageProp.addActionListener(new gui.actions.ManageProperties());
 
 		top.setMaximumSize(maxTop);
 		top.add(imgDisplay);
