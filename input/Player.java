@@ -28,23 +28,6 @@ public class Player {
 		guiDisp = new gui.PlayerContainer(this);
 	}
 
-	//! returns true if it is still the user's turn
-	public boolean turn() {
-		if (jailed) {
-			jailed = false;
-			//TODO update jailed gui state
-			return false;
-		}
-		//TODO
-		return false;
-	}
-	public void move(int num) {
-		for (int i = 0; i < num; i++) {
-			pos = pos.next;
-			pos.pass(this);
-		}
-		pos.land(this);
-	}
 	//! returns the amount that was able to be deducted from the user.
 	public int charge(int cost) {
 		if (funds >= cost) {

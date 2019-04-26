@@ -25,7 +25,9 @@ public class Square {
 	}
 	public void land(input.Player usr) {
 		if (is_gotojail != null && is_gotojail) {
-			usr.move(20);
+			for (int i = 0; i < 20; i++) /*Move 20 squares to jail without passing any*/ {
+				usr.pos = usr.pos.next;
+			}
 			usr.jailed = true;
 		}
 		else if (on_land > 0)
