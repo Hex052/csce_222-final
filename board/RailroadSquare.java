@@ -14,11 +14,10 @@ public class RailroadSquare extends BuyableSquare {
 		}
 		else if (!owner.equals(usr)) {
 			int owed = 25*(1<<(owner.railroadsOwned - 1));
-			input.Log.write("Charged " + usr.name + " $" + owed + " for landing on " + name + ". Deposited in the account of " + owner.name + "\n");
-			owner.deposit(usr.charge(owed));
+			charge(usr, owed);
 		}
 	}
 	public String toString() {
-		return "RR \'" + name + "\' costing $" + cost + " and with a base rent of $" + rent; 
+		return "RR \'" + name + "\' costing $" + cost + " and with a base rent of $" + rent;
 	}
 }

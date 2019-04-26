@@ -20,7 +20,7 @@ public abstract class BuyableSquare extends Square {
 	}
 	public void purchase(input.Player usr) {
 		if (usr.getFunds() < cost) {
-			JOptionPane.showMessageDialog(null, "Unaffordable", "You are unable to purcase " + name + " for " + cost + "since you do not have enough funds.", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "You are unable to purcase " + name + " for " + cost + "since you do not have enough funds.", "Unaffordable", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 		int choice = JOptionPane.showConfirmDialog(null, "Purchase " + name, "Do you want to purchase " + name + " for " + cost + "?", JOptionPane.YES_NO_OPTION);
@@ -28,6 +28,14 @@ public abstract class BuyableSquare extends Square {
 			gui.LogPanel.write(usr.name + " purchased " + name + " for $" + cost);
 			usr.charge(cost);
 			owner = usr;
+		}
+	}
+	public void charge(input.Player usr, int amount) {
+		int charged = usr.charge(amount);
+		owner.deposit(charged);
+		gui.LogPanel.write("Charged " + usr.name + " $" + charged + " for landing on " + name + " owned by " + owner.name + "\n");
+		if (amount != charged) {
+			gui.LogPanel.write("Unable to charge the full amount of $" + amount);
 		}
 	}
 }

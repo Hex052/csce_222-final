@@ -15,13 +15,12 @@ public class UtilitySquare extends BuyableSquare {
 		}
 		else if (!owner.equals(usr)) {
 			int dieresult = input.Player.rollDice(1);
-			input.Log.write("Charged " + usr.name + " $" + (dieresult*multiplier) + " for landing on " + name + ". Deposited in the account of " + owner.name + "\n");
-			owner.deposit(usr.charge(dieresult * multiplier));
+			charge(usr, dieresult * multiplier);
 		}
 	}
 
 	public String toString() {
-		return "Utility \'" + name + "\' costing $" + cost + " and with a multiplier of " + multiplier; 
+		return "Utility \'" + name + "\' costing $" + cost + " and with a multiplier of " + multiplier;
 	}
 	// public void pass(input.Player usr)
 	// marked final in BuyableSquare

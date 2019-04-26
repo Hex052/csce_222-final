@@ -23,8 +23,7 @@ public class PropertySquare extends BuyableSquare {
 			purchase(usr);
 		}
 		else if (!owner.equals(usr)) {
-			input.Log.write("Charged " + usr.name + " $" + rents[upgrades] + " for landing on " + name + ". Deposited in the account of " + owner.name + "\n");
-			owner.deposit(usr.charge(rents[upgrades]));
+			charge(usr, rents[upgrades]);
 		}
 	}
 	public String toString() {
