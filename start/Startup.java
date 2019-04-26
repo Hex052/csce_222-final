@@ -4,11 +4,11 @@ import java.io.File;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
-import java.util.Scanner;
-
 public class Startup {
 	public static board.Square go = null;
 	public static input.Player[] players = new input.Player[4];
+	public static input.Player currentPlayer = null;
+	public static boolean passingTurn = true;
 
 	public static void main(String[] args) {
 		/*Init colormap from String to Color*/
@@ -19,18 +19,19 @@ public class Startup {
 		/*Load cards from file*/
 		//TODO
 		/*Init players*/
-		for (int i = 0; i < players.length; i++) {
-			players[i] = new input.Player(go, null, null); //TODO if still null, remove code from Player class
+		input.Player lastPlayer = new input.Player(go, null, null);
+		players[0] = lastPlayer;
+		for (int i = 1; i < players.length; i++) {
+			players[i] = new input.Player(go, null, lastPlayer);
+			lastPlayer.next = players[i];
+			lastPlayer = players[i];
 		}
-
-		/*Gameplay*/
-		// for (int turn = 1; turn <= 10; turn++) {
-		// 	for (input.Player user : players) {
-		//
-		// 	}
-		// }
-		/*Debug*/
+		players[3].next = players[0];
+		players[0].prev = players[3];
+		currentPlayer = players[0];
+		/*Set up game board*/
 		new gui.MainFrame();
+		/*Debug*/
 		gui.MainFrame.frame.setVisible(true);
 		// for (int i = 0; i < 42; i++) {
 		// 	System.out.println(curr.toString());

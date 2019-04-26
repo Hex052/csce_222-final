@@ -4,17 +4,25 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class BoardPanel extends JPanel {
 	private static final long serialVersionUID = 42l;
 	public static Image img = null;
+	public static JButton roll = new JButton("Next Turn");
 	public BoardPanel() {
 		// setBackground(java.awt.Color.RED);
 		if (img == null) {
 			readImage(new File("img/Map.jpg"));
 		}
+
+		setLayout(null);
+		roll.setSize(150, 30);
+		roll.setLocation(325,125);
+		roll.addActionListener(new gui.actions.BeginTurn());
+		add(roll);
 	}
 
 	public static void readImage(File img_file) {
