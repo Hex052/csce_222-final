@@ -1,11 +1,9 @@
-package gui.select;
+package gui.actions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-
-import java.awt.event.ActionListener;
 
 public class ChangeName implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
