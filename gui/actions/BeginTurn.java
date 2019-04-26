@@ -11,17 +11,24 @@ public class BeginTurn implements ActionListener {
 		start.Startup.passingTurn = false;
 		//Current player referenced from start.Startup.currentPlayer
 		Player usr = start.Startup.currentPlayer;
-		int roll = input.Player.rollDice(2);
-		String toLog = "Moved " + usr.name + " from " + usr.pos.name + " to ";
-		for (int i = 0; i < roll; i++) {
-			usr.pos = usr.pos.next;
-			usr.pos.pass(usr);
+
+		if (usr.jailed) {
+			gui.LogPanel.write(usr.name + " was in jail. They are now free.\n");
+			usr.jailed = false;
 		}
-		toLog = toLog + usr.pos.name + '\n';
+		else {
+			int roll = input.Player.rollDice(2);
+			String toLog = "Moved " + usr.name + " from " + usr.pos.name + " to ";
+			for (int i = 0; i < roll; i++) {
+				usr.pos = usr.pos.next;
+				usr.pos.pass(usr);
+			}
+			toLog = toLog + usr.pos.name + '\n';
 
-		gui.LogPanel.write(toLog);
+			gui.LogPanel.write(toLog);
 
-		usr.pos.land(usr);
+			usr.pos.land(usr);
+		}
 
 		start.Startup.currentPlayer = usr.next;
 		gui.LogPanel.write("Passing turn to " + usr.next.name);
