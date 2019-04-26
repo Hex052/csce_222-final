@@ -22,6 +22,7 @@ public class ChangeName implements ActionListener {
 		usr.guiDisp.name.setText(newName);
 		usr.guiDisp.changeName.setName(newName);
 		usr.guiDisp.changeImg.setName(newName);
+		usr.guiDisp.manageProp.setName(newName);
 		gui.LogPanel.write("Player renamed from " + oldName + " to " + newName);
 	}
 }
