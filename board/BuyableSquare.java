@@ -28,7 +28,7 @@ public abstract class BuyableSquare extends Square {
 		if (choice == JOptionPane.YES_OPTION) {
 			gui.LogPanel.write(usr.name + " purchased " + name + " for $" + cost);
 			usr.charge(cost);
-			owner = usr;
+			setOwner(usr);
 			return true;
 		}
 		return false;
@@ -40,5 +40,12 @@ public abstract class BuyableSquare extends Square {
 		if (amount != charged) {
 			gui.LogPanel.write("Unable to charge the full amount of $" + amount);
 		}
+	}
+	public void setOwner(input.Player usr) {
+		if (owner != null) {
+			owner.propertyList.remove(this);
+		}
+		owner = usr;
+		usr.propertyList.add(this);
 	}
 }
