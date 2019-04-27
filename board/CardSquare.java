@@ -18,6 +18,7 @@ public class CardSquare extends Square {
 		}
 	}
 	public void land(input.Player usr) {
+		usr.updateDisplayedPos();
 		//TODO draw cards
 	}
 	public void pass(input.Player usr) {

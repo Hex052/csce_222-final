@@ -29,6 +29,11 @@ public class BoardPanel extends JPanel {
 		currTurn.setSize(200, 50);
 		currTurn.setLocation(300, 90);
 		add(currTurn);
+
+		for (input.Player usr : start.Startup.players) {
+			usr.icon = new PlayerIcon(usr);
+			add(usr.icon);
+		}
 	}
 
 	public static void readImage(File img_file) {

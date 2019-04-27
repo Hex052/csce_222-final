@@ -6,9 +6,9 @@ import javax.swing.JPanel;
 
 public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 42l;
-	public static BoardPanel board = new BoardPanel();
 	public static LogPanel log = new LogPanel();
 	public static PlayerPanel players = new PlayerPanel();
+	public static BoardPanel board = new BoardPanel();
 	public static JPanel right = new JPanel();
 	public static MainFrame frame = null;
 	public static JFrame logFrame = new JFrame();
