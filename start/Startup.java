@@ -14,7 +14,8 @@ public class Startup {
 		/*Init colormap from String to Color*/
 		Colormap.init();
 		/*Load squares from file*/
-		processSquaresFile("squares.txt");
+		processSquaresFile("info/squares.txt");
+		cards.CardDeck.init(new File("info/community.csv"), new File("info/chance.csv"));
 		board.Square curr = go;
 		/*Load cards from file*/
 		//TODO load cards
