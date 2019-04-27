@@ -42,6 +42,14 @@ public class Startup {
 		// }
 
 	}
+
+	public static void nextTurn() {
+		currentPlayer = currentPlayer.next;
+		gui.LogPanel.write("Passing turn to " + currentPlayer.name);
+		gui.BoardPanel.setNextLabel(currentPlayer.name);
+		start.Startup.passingTurn = true;
+	}
+
 	public static void processSquaresFile(String filename) {
 		board.Square last = null;
 		Scanner squaresfile = null;

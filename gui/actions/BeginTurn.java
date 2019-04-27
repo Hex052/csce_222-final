@@ -30,9 +30,6 @@ public class BeginTurn implements ActionListener {
 			usr.pos.land(usr);
 		}
 
-		start.Startup.currentPlayer = usr.next;
-		gui.LogPanel.write("Passing turn to " + usr.next.name);
-
-		start.Startup.passingTurn = true;
+		start.Startup.nextTurn();
 	}
 }

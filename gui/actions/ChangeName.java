@@ -18,10 +18,13 @@ public class ChangeName implements ActionListener {
 			if (newName == null)
 				return;
 		}
+		if (newName.equals(""))
+			return;
 		usr.name = newName;
 		usr.guiDisp.name.setText(newName);
 		usr.guiDisp.changeName.setName(newName);
 		usr.guiDisp.changeImg.setName(newName);
 		gui.LogPanel.write("Player renamed from " + oldName + " to " + newName);
+		gui.BoardPanel.setNextLabel(start.Startup.currentPlayer.name);
 	}
 }

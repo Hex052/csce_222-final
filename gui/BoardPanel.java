@@ -5,13 +5,15 @@ import java.awt.Image;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class BoardPanel extends JPanel {
 	private static final long serialVersionUID = 42l;
 	public static Image img = null;
-	public static JButton roll = new JButton("Next Turn");
+	public static JButton roll = new JButton("Begin Turn");
+	public static JLabel currTurn = new JLabel("", JLabel.CENTER);
 	public BoardPanel() {
 		// setBackground(java.awt.Color.RED);
 		if (img == null) {
@@ -20,9 +22,13 @@ public class BoardPanel extends JPanel {
 
 		setLayout(null);
 		roll.setSize(150, 30);
-		roll.setLocation(325,125);
+		roll.setLocation(325,140);
 		roll.addActionListener(new gui.actions.BeginTurn());
 		add(roll);
+		setNextLabel(start.Startup.currentPlayer.name);
+		currTurn.setSize(200, 50);
+		currTurn.setLocation(300, 90);
+		add(currTurn);
 	}
 
 	public static void readImage(File img_file) {
@@ -47,5 +53,8 @@ public class BoardPanel extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(img, 0, 0, null);
+	}
+	public static void setNextLabel(String name) {
+		currTurn.setText("Next Player: " + name);
 	}
 }
