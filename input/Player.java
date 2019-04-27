@@ -1,6 +1,5 @@
 package input;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -13,7 +12,7 @@ public class Player {
 	public boolean jailed = false;
 	public board.Square pos = null;
 	public ArrayList<board.BuyableSquare> propertyList = new ArrayList<>();
-	public BufferedImage icon = null;
+	public gui.PlayerIcon icon = null;
 	public gui.PlayerContainer guiDisp;
 	private static java.util.Random singleDie = new java.util.Random();
 
@@ -79,6 +78,7 @@ public class Player {
 		return "Player \'" + name + "\' on square \'" + pos.name + "\' with $" + funds;
 	}
 	public void updateDisplayedPos() {
+		icon.reposition();
 		if (pos.is_gotojail != null && pos.is_gotojail == false) {
 			guiDisp.pos.setText((jailed ? "In" : "Visiting") + " Jail");
 			return;

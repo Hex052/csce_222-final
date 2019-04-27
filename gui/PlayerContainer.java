@@ -3,6 +3,7 @@ package gui;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
@@ -15,10 +16,11 @@ import javax.swing.JTextField;
 
 public class PlayerContainer extends JPanel {
 	private static final long serialVersionUID = 42l;
-	public static ImageIcon beginImg = null;
+	public static BufferedImage beginImg = null;
 	// public JTextField name;
 	public input.Player usr;
 	public JLabel funds;
+	public BufferedImage img;
 	public JLabel imgDisplay, name, pos;
 	public JPanel top = new JPanel(), topRight = new JPanel();
 	public Dimension maxTop = new Dimension(450, 160);
@@ -32,12 +34,13 @@ public class PlayerContainer extends JPanel {
 		if (beginImg == null) {
 			setInitialImage(new File("img/piece/car.png"));
 		}
+		img = beginImg;
 		changeName = new JButton("Change Name");
 		changeName.setName(usr.name);
 		changeName.addActionListener(new gui.actions.ChangeName());
 		changeImg = new JButton("Change Icon");
 		changeImg.setName(usr.name);
-		imgDisplay = new JLabel(beginImg);
+		imgDisplay = new JLabel(new ImageIcon(img));
 		manageProp = new JButton("Properties");
 		manageProp.setName(usr.name);
 		manageProp.addActionListener(new gui.actions.ManageProperties(usr));
@@ -69,7 +72,7 @@ public class PlayerContainer extends JPanel {
 	public static void setInitialImage(File img_file) {
 		if (img_file.exists() && !img_file.isDirectory()) {
 			try {
-				beginImg = new ImageIcon(ImageIO.read(img_file));
+				beginImg = ImageIO.read(img_file);
 			}
 			catch (Exception e) {
 				System.err.println("Error reading image \'" + img_file.getAbsolutePath() + "\'");

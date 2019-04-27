@@ -24,7 +24,7 @@ public abstract class BuyableSquare extends Square {
 			JOptionPane.showMessageDialog(null, "You are unable to purcase " + name + " for " + cost + "since you do not have enough funds.", "Unaffordable", JOptionPane.WARNING_MESSAGE);
 			return false;
 		}
-		int choice = JOptionPane.showConfirmDialog(null, "Purchase " + name, "Do you want to purchase " + name + " for " + cost + "?", JOptionPane.YES_NO_OPTION);
+		int choice = JOptionPane.showConfirmDialog(gui.MainFrame.frame, "Purchase " + name, "Do you want to purchase " + name + " for " + cost + "?", JOptionPane.YES_NO_OPTION);
 		if (choice == JOptionPane.YES_OPTION) {
 			gui.LogPanel.write(usr.name + " purchased " + name + " for $" + cost);
 			usr.charge(cost);

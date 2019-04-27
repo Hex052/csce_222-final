@@ -13,6 +13,7 @@ public class TaxSquare extends Square {
 		return;
 	}
 	public final void land(input.Player usr) {
+		usr.updateDisplayedPos();
 		int amount = usr.charge(taxrate);
 		String log = "Charged " + usr.name + " $" + amount;
 		if (amount < taxrate) {

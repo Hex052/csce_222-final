@@ -3,6 +3,8 @@ package board;
 import javax.swing.JOptionPane;
 
 public class Square {
+	private static int counter = 0;
+	public final int squareNum;
 	public Square next, prev;
 	public String name;
 	public int on_land, on_pass;
@@ -11,6 +13,7 @@ public class Square {
 		this.name = name;
 		next = n;
 		prev = p;
+		squareNum = counter++;
 	}
 	public Square(String name, Square n, Square p, int onland, int onpass) {
 		this.name = name;
@@ -18,12 +21,14 @@ public class Square {
 		prev = p;
 		on_land = onland;
 		on_pass = onpass;
+		squareNum = counter++;
 	}
 	public Square(String name, Square n, Square p, boolean is_gotojail) {
 		this.name = name;
 		next = n;
 		prev = p;
 		this.is_gotojail = is_gotojail;
+		squareNum = counter++;
 	}
 	public void land(input.Player usr) {
 		usr.updateDisplayedPos();
