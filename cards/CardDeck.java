@@ -35,13 +35,40 @@ public class CardDeck {
 			JOptionPane.showMessageDialog(null, "Exception occured while reading cards. Message: \n" + e.getMessage(), "Could not read cards", JOptionPane.ERROR_MESSAGE);
 			System.err.println(e.getStackTrace());
 		}
-	
+
 		Collections.shuffle(chanceDrawPile);
 		Collections.shuffle(chestDrawPile);
 	}
 
-	//Only avaliable to cards
-	protected static void discard(Card card) {
+	public static Chance drawChance() {
+		if (chanceDrawPile.size() == 0) {
+			ArrayList<Chance> temp = chanceDrawPile;
+			chanceDrawPile = chanceDiscardPile;
+			chanceDiscardPile = temp;
+			Collections.shuffle(chanceDrawPile);
+		}
+		Chance card = chanceDrawPile.get(0);
+		chanceDrawPile.remove(0);
+		return card;
+	}
+	public static CommunityChest drawCommunityChest() {
+		if (chestDrawPile.size() == 0) {
+			ArrayList<CommunityChest> temp = chestDrawPile;
+			chestDrawPile = chestDiscardPile;
+			chestDiscardPile = temp;
+			Collections.shuffle(chestDrawPile);
+		}
+		CommunityChest card = chestDrawPile.get(0);
+		chestDrawPile.remove(0);
+		return card;
+	}
 
+	public static void discard(Card card) {
+		if (card instanceof Chance) {
+			chanceDiscardPile.add((Chance)card);
+		}
+		else {
+			chestDiscardPile.add((CommunityChest)card);
+		}
 	}
 }

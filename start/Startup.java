@@ -15,10 +15,9 @@ public class Startup {
 		Colormap.init();
 		/*Load squares from file*/
 		processSquaresFile("info/squares.txt");
-		cards.CardDeck.init(new File("info/community.csv"), new File("info/chance.csv"));
 		board.Square curr = go;
 		/*Load cards from file*/
-		//TODO load cards
+		cards.CardDeck.init(new File("info/community.csv"), new File("info/chance.csv"));
 		/*Init players*/
 		input.Player lastPlayer = new input.Player(go, null, null);
 		players[0] = lastPlayer;
@@ -32,16 +31,7 @@ public class Startup {
 		currentPlayer = players[0];
 		/*Set up game board*/
 		new gui.MainFrame();
-		/*Debug*/
 		gui.MainFrame.frame.setVisible(true);
-		// for (int i = 0; i < 42; i++) {
-		// 	System.out.println(curr.toString());
-		// 	curr = curr.next;
-		// }
-		// for (input.Player p : players) {
-		// 	System.out.println(p.toString());
-		// }
-
 	}
 
 	public static void nextTurn() {
