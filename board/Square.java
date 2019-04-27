@@ -35,11 +35,7 @@ public class Square {
 		if (is_gotojail != null && is_gotojail) {
 			JOptionPane.showMessageDialog(gui.MainFrame.frame, "Go Directly to Jail. Do not pass GO. Do not collect $200.", "Go To Jail", JOptionPane.INFORMATION_MESSAGE);
 			gui.LogPanel.write(usr.name + " was sent to Jail.");
-			for (int i = 0; i < 20; i++) /*Move 20 squares to jail without passing any*/ {
-				usr.pos = usr.pos.next;
-			}
-			usr.jailed = true;
-			usr.updateDisplayedPos(); //Again after being moved to jail
+			usr.gotoJail();
 		}
 		else if (on_land > 0)
 			usr.deposit(on_land);
