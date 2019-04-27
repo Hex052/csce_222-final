@@ -7,6 +7,7 @@ public class RailroadSquare extends BuyableSquare {
 	public RailroadSquare(String name, Square n, Square p, int cost, int rent) {
 		super(name, n, p, cost);
 		this.rent = rent;
+		disp = new gui.props.RailroadPanel(this);
 	}
 	public void land(input.Player usr) {
 		if (owner == null) {

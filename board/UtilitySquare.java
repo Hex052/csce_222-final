@@ -7,6 +7,7 @@ public class UtilitySquare extends BuyableSquare {
 	public UtilitySquare(String name, Square n, Square p, int cost, int multi) {
 		super(name, n, p, cost);
 		multiplier = multi;
+		disp = new gui.props.UtilityPanel(this);
 	}
 
 	public void land(input.Player usr) {
