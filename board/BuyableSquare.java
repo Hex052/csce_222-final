@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 public abstract class BuyableSquare extends Square {
 	protected int cost;
 	public input.Player owner = null;
+	public gui.PropertyPanel disp = null;
 
 	public BuyableSquare(String name, Square n, Square p, int c) {
 		super(name, n, p);

@@ -19,10 +19,10 @@ public class PlayerContainer extends JPanel {
 	// public JTextField name;
 	public input.Player usr;
 	public JLabel funds;
-	public JLabel imgDisplay, name;
+	public JLabel imgDisplay, name, pos;
 	public JPanel top = new JPanel(), topRight = new JPanel();
 	public Dimension maxTop = new Dimension(450, 160);
-	public JButton changeName, changeImg;
+	public JButton changeName, changeImg, manageProp;
 
 	public PlayerContainer(input.Player player) {
 		usr = player;
@@ -38,15 +38,21 @@ public class PlayerContainer extends JPanel {
 		changeImg = new JButton("Change Icon");
 		changeImg.setName(usr.name);
 		imgDisplay = new JLabel(beginImg);
+		manageProp = new JButton("Properties");
+		manageProp.setName(usr.name);
+		manageProp.addActionListener(new gui.actions.ManageProperties());
+		pos = new JLabel("On " + usr.pos.name); //TODO make this change when user moves
 
 		top.setMaximumSize(maxTop);
 		top.add(imgDisplay);
 		top.add(topRight);
 		topRight.setLayout(new GridLayout(0,2));
 		topRight.add(name);
-		topRight.add(funds);
 		topRight.add(changeName);
+		topRight.add(funds);
 		topRight.add(changeImg);
+		topRight.add(pos);
+		topRight.add(manageProp);
 
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		add(top); //below would go the properties owned
