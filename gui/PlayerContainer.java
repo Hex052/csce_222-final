@@ -40,7 +40,7 @@ public class PlayerContainer extends JPanel {
 		imgDisplay = new JLabel(beginImg);
 		manageProp = new JButton("Properties");
 		manageProp.setName(usr.name);
-		manageProp.addActionListener(new gui.actions.ManageProperties());
+		manageProp.addActionListener(new gui.actions.ManageProperties(usr));
 		pos = new JLabel("On " + usr.pos.name); //TODO make this change when user moves
 
 		top.setMaximumSize(maxTop);

@@ -16,7 +16,7 @@ public class PropertySquare extends BuyableSquare {
 		rents = rent;
 		colorstr = colorname;
 		this.color = start.Colormap.map.get(colorname);
-
+		disp = new gui.props.ColoredPropertyPanel(this);
 	}
 	public void land(input.Player usr) {
 		if (owner == null) {
