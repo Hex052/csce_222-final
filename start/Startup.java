@@ -17,7 +17,7 @@ public class Startup {
 		processSquaresFile("squares.txt");
 		board.Square curr = go;
 		/*Load cards from file*/
-		//TODO
+		//TODO load cards
 		/*Init players*/
 		input.Player lastPlayer = new input.Player(go, null, null);
 		players[0] = lastPlayer;

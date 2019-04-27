@@ -58,7 +58,6 @@ public class Player {
 	//! Displays a new window with the result of the die roll(s).
 	//! num must be positive.
 	public static int rollDice(int num) {
-		//TODO
 		int roll, tot = 0;
 		int[] list = new int[num];
 		for (int i = 0; i < num; i++) {

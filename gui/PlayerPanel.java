@@ -12,7 +12,5 @@ public class PlayerPanel extends JPanel {
 		for (input.Player usr : start.Startup.players) {
 			add(usr.guiDisp);
 		}
-		// setSize(new Dimension(450,650));
-		//TODO
 	}
 }

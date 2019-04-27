@@ -1,5 +1,5 @@
 package cards;
 
-public class Chance {
-	//TODO fill class
+public class Chance extends Card {
+	//TODO fill chance class
 }

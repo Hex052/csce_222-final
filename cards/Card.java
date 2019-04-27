@@ -1,5 +1,5 @@
 package cards;
 
-public class Card {
-	//TODO fill class
+public abstract class Card {
+	//TODO fill abstract card class
 }

@@ -10,4 +10,3 @@
 * Log for send to jail
 * Cards
 * Moving icons around on board
-* Manage properties
