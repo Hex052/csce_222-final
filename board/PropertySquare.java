@@ -19,6 +19,7 @@ public class PropertySquare extends BuyableSquare {
 		disp = new gui.props.ColoredPropertyPanel(this);
 	}
 	public void land(input.Player usr) {
+		usr.updateDisplayedPos();
 		if (owner == null) {
 			purchase(usr);
 		}

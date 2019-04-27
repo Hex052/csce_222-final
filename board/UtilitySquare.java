@@ -11,6 +11,7 @@ public class UtilitySquare extends BuyableSquare {
 	}
 
 	public void land(input.Player usr) {
+		usr.updateDisplayedPos();
 		if (owner == null) {
 			purchase(usr);
 		}

@@ -10,6 +10,7 @@ public class RailroadSquare extends BuyableSquare {
 		disp = new gui.props.RailroadPanel(this);
 	}
 	public void land(input.Player usr) {
+		usr.updateDisplayedPos();
 		if (owner == null) {
 			if(purchase(usr))
 				usr.railroadsOwned++;

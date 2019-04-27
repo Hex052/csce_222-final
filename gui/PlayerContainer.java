@@ -41,11 +41,12 @@ public class PlayerContainer extends JPanel {
 		manageProp = new JButton("Properties");
 		manageProp.setName(usr.name);
 		manageProp.addActionListener(new gui.actions.ManageProperties(usr));
-		pos = new JLabel("On " + usr.pos.name); //TODO make this change when user moves
+		pos = new JLabel("On " + usr.pos.name);
 
 		top.setMaximumSize(maxTop);
 		top.add(imgDisplay);
 		top.add(topRight);
+		//TODO rearrange this so long strings don't cause render issues
 		topRight.setLayout(new GridLayout(0,2));
 		topRight.add(name);
 		topRight.add(changeName);

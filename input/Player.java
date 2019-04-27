@@ -78,4 +78,11 @@ public class Player {
 	public String toString() {
 		return "Player \'" + name + "\' on square \'" + pos.name + "\' with $" + funds;
 	}
+	public void updateDisplayedPos() {
+		if (pos.is_gotojail != null && pos.is_gotojail == false) {
+			guiDisp.pos.setText((jailed ? "In" : "Visiting") + " Jail");
+			return;
+		}
+		guiDisp.pos.setText("On " + pos.name);
+	}
 }
