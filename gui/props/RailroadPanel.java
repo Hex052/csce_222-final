@@ -1,6 +1,6 @@
 package gui.props;
 
-import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
 import javax.swing.JLabel;
 
 public class RailroadPanel extends PropertyPanel {
@@ -8,14 +8,11 @@ public class RailroadPanel extends PropertyPanel {
 	protected JLabel railroadsOwned = new JLabel();
 	public RailroadPanel(board.RailroadSquare sq) {
 		super(sq);
-		GridBagConstraints c = new GridBagConstraints();
-		c.gridx = 1;
-		c.gridy = 0;
-		c.gridwidth = 1;
-		add(railroadsOwned, c);
-		c.gridwidth = GridBagConstraints.REMAINDER;
-		add(rent, c);
-		//Can't set anything with a call to refresh() since doesn't have owner yet
+		name.setForeground(java.awt.Color.WHITE);
+		setBackground(java.awt.Color.BLACK);
+		subpanel.setLayout(new GridLayout(0,2));
+		subpanel.add(railroadsOwned);
+		subpanel.add(rent);
 	}
 	public void refresh() {
 		railroadsOwned.setText(pos.owner.railroadsOwned + " railroads owned");

@@ -1,6 +1,6 @@
 package gui.props;
 
-import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -11,24 +11,23 @@ public class ColoredPropertyPanel extends PropertyPanel {
 	protected JLabel remaining, applied;
 	public ColoredPropertyPanel(board.PropertySquare sq) {
 		super(sq);
-		name.setBackground(sq.color);
-
-		GridBagConstraints c = new GridBagConstraints();
-		c.gridx = 1;
-		c.gridy = 1;
-		c.gridwidth = 1;
-		add(rent, c);
-		c.gridwidth = GridBagConstraints.REMAINDER;
+		setBackground(sq.color);
+		subpanel.setLayout(new GridLayout(0,2));
+		subpanel.add(rent);
 		applied = new JLabel("Upgrades Applied");
-		add(applied, c);
-		c.gridwidth = 1;
+		subpanel.add(applied);
 		remaining = new JLabel("Upgrades Remain");
-		add(remaining, c);
-		c.gridwidth = GridBagConstraints.REMAINDER;
+		subpanel.add(remaining);
 		upgrade = new JButton("Upgrade");
-		add(upgrade,c);
+		upgrade.addActionListener(new gui.actions.UpgradeProperty((board.PropertySquare)pos));
+		subpanel.add(upgrade);
 	}
 	public void refresh() {
-		//TODO something useful on refresh
+		board.PropertySquare sq = (board.PropertySquare)pos;
+		rent.setText("Rent: $" + sq.rents[sq.upgrades]);
+		upgrade.setText((sq.upgrades < 4) ? "Upgrade" : "No more houses");
+		upgrade.setEnabled(sq.upgrades < 4);
+		remaining.setText((4-sq.upgrades) + " houses left");
+		applied.setText(sq.upgrades + " houses built");
 	}
 }

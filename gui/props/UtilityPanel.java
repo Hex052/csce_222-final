@@ -1,6 +1,5 @@
 package gui.props;
 
-import java.awt.GridBagConstraints;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -9,14 +8,10 @@ public class UtilityPanel extends PropertyPanel {
 	private static final long serialVersionUID = 42l;
 	public UtilityPanel(board.UtilitySquare sq) {
 		super(sq);
-
-		GridBagConstraints c = new GridBagConstraints();
-		c.gridx = 1;
-		c.gridwidth = GridBagConstraints.REMAINDER;
-		c.gridy = 0;
-
+		name.setForeground(java.awt.Color.WHITE);
+		setBackground(java.awt.Color.BLACK);
 		rent.setText(sq.multiplier + "x the roll of a die");
-		add(rent,c);
+		subpanel.add(rent);
 	}
 	public void refresh() {
 		return;
