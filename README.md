@@ -7,5 +7,4 @@
 ## TODO
 
 * Log for pass go
-* Cards
 * Change icon
