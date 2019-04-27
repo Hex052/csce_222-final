@@ -37,7 +37,9 @@ public class Player {
 		else {
 			int oldfunds = funds;
 			funds = 0;
-			//TODO Case where unable to cover amount
+			String msg = name + " was charged $" + cost + " but could only cover $" + oldfunds + "!";
+			gui.LogPanel.write(msg);
+			JOptionPane.showMessageDialog(gui.MainFrame.frame, msg, "Could not cover charges", JOptionPane.WARNING_MESSAGE);
 			guiDisp.updateFunds();
 			return oldfunds;
 		}
