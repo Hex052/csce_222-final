@@ -20,6 +20,7 @@ public class CommunityChest extends Card {
 		displayMsg();
 		switch (type) {
 			case 1:
+				gui.LogPanel.write(usr.name + " sent to " + toSquareName + " by Chance card");
 				do {
 					usr.pos = usr.pos.next;
 					usr.pos.pass(usr);
@@ -28,20 +29,26 @@ public class CommunityChest extends Card {
 				break;
 			case 2:
 				if (money < 0) {
+					gui.LogPanel.write(usr.name + " charged $" + (-money) + " by Chance card");
 					usr.charge(-money);
 				}
 				else {
+					gui.LogPanel.write(usr.name + " received $" + money + " from Chance card");
 					usr.deposit(money);
 				}
 				break;
 			case 3:
+				gui.LogPanel.write(usr.name + " sent to jail by Community Chest card");
 				usr.gotoJail();
 				break;
 			case 4:
 				input.Player otherUsr = usr.next;
+				int bal = 0;
 				do {
-					usr.deposit(otherUsr.charge(-money));
+					bal += otherUsr.charge(-money);
 				} while (usr != otherUsr);
+				usr.deposit(bal);
+				gui.LogPanel.write("All other players paid $" + bal + " to " + usr.name + " ($" + (-money) + " each) because of Community Chest card");
 				break;
 			case 5:
 				int houses = 0;
@@ -50,6 +57,7 @@ public class CommunityChest extends Card {
 						houses += ((board.PropertySquare)sq).upgrades;
 					}
 				}
+				gui.LogPanel.write(usr.name + " charged $" + usr.charge((-money) * houses) + " for " + houses + " houses ($" + (-money) + "each) by Community Chest card");
 				usr.charge((-money) * houses);
 				break;
 		}
