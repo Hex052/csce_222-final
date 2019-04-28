@@ -19,4 +19,10 @@ Almost all of the things I wrote were changed several times over, as I realized 
 My workflow was basically to start with a set of TOODs (both in the README and in comments), and then remove them when I finished with a task, or add more if there was more work to be done, but would have to be come back to.
 I didn't start with a concrete plan of how I wanted to get things done, as evidenced by the fact that my code is slightly all over the place. Also, most of the variables are not private/protected even though they should be, or final even when they never change.
 
-## TODO UML Diagram
+## UML Diagram
+
+*Used the tool [StarUML](http://staruml.io/)*
+
+[![Gigantic UML diagram that is absolutely huge.](info/uml-svg/Overview.svg "Gigantic UML diagram that is absolutely huge.")](info/uml-svg/Overview.svg)
+
+Additional ones by package are avaliable in [info/uml-svg/](info/uml-svg/).
