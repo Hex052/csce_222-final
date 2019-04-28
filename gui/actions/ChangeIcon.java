@@ -5,7 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -48,8 +50,14 @@ public class ChangeIcon implements ActionListener {
 		window.setVisible(true);
 	}
 	public void changeTo(File img) {
-		System.out.println(img);
-		//TODO Make this change icons
+		try {
+			usr.guiDisp.img = ImageIO.read(img);
+			usr.guiDisp.imgDisplay.setIcon(new ImageIcon(usr.guiDisp.img));
+			gui.LogPanel.write("Changed the icon for " + usr.name + " to \'" + img + '\'');
+		}
+		catch (Exception e) {
+			gui.LogPanel.write("Could not change the icon for " + usr.name + " to \'" + img + "\' as an error occured");
+		}
 		usr.icon.reloadIcon();
 	}
 	public static void genFiles(File parentDir) {
