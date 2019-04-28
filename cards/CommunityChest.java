@@ -46,6 +46,7 @@ public class CommunityChest extends Card {
 				int bal = 0;
 				do {
 					bal += otherUsr.charge(-money);
+					otherUsr = otherUsr.next;
 				} while (usr != otherUsr);
 				usr.deposit(bal);
 				gui.LogPanel.write("All other players paid $" + bal + " to " + usr.name + " ($" + (-money) + " each) because of Community Chest card");
