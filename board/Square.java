@@ -44,8 +44,10 @@ public class Square {
 	}
 	//! Pass should be called before land
 	public void pass(input.Player usr) {
-		if (on_pass > 0)
+		if (on_pass > 0) {
 			usr.deposit(on_pass);
+			gui.LogPanel.write(usr.name + " collected $" + on_pass + " for passing " + name);
+		}
 		else if (on_pass < 0)
 			usr.charge(-on_pass);
 	}
