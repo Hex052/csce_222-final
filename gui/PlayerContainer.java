@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class PlayerContainer extends JPanel {
@@ -21,7 +22,8 @@ public class PlayerContainer extends JPanel {
 	public input.Player usr;
 	public JLabel funds;
 	public BufferedImage img;
-	public JLabel imgDisplay, name, pos;
+	public JLabel imgDisplay;
+	public JTextArea name, pos;
 	public JPanel top = new JPanel(), topRight = new JPanel();
 	public Dimension maxTop = new Dimension(450, 160);
 	public JButton changeName, changeImg, manageProp;
@@ -29,7 +31,10 @@ public class PlayerContainer extends JPanel {
 	public PlayerContainer(input.Player player) {
 		usr = player;
 		funds = new JLabel("$" + usr.getFunds());
-		name = new JLabel(usr.name);
+		name = new JTextArea(usr.name);
+		name.setEditable(false);
+		name.setLineWrap(true);
+		name.setWrapStyleWord(true);
 
 		if (beginImg == null) {
 			setInitialImage(new File("img/piece/car.png"));
@@ -45,12 +50,14 @@ public class PlayerContainer extends JPanel {
 		manageProp = new JButton("Properties");
 		manageProp.setName(usr.name);
 		manageProp.addActionListener(new gui.actions.ManageProperties(usr));
-		pos = new JLabel("On " + usr.pos.name);
+		pos = new JTextArea("On " + usr.pos.name);
+		pos.setEditable(false);
+		pos.setLineWrap(true);
+		pos.setWrapStyleWord(true);
 
 		top.setMaximumSize(maxTop);
 		top.add(imgDisplay);
 		top.add(topRight);
-		//TODO rearrange this so long strings don't cause render issues
 		topRight.setLayout(new GridLayout(0,2));
 		topRight.add(name);
 		topRight.add(changeName);
@@ -62,7 +69,7 @@ public class PlayerContainer extends JPanel {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		add(top); //below would go the properties owned
 
-		// repaint();
+
 	}
 
 	public void updateFunds() {
