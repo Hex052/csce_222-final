@@ -87,4 +87,11 @@ public class Player {
 		}
 		guiDisp.pos.setText("On " + pos.name);
 	}
+	public void gotoJail() {
+		jailed = true;
+		do {
+			pos = pos.next;
+		} while (pos.is_gotojail == null || pos.is_gotojail);
+		updateDisplayedPos();
+	}
 }
