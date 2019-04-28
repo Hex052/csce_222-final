@@ -1,6 +1,10 @@
 # [Monopoly](https://github.com/Hex052/csce_222-final)
 
+To start the program, run `start.Startup`.
+
 The final project for my Object Oriented programming class.
+
+If you want it to run for some other number of rounds other than 10, change `start.Startup.MAX_TURNS` to the number of rounds you want.
 
 ## Reasons for coding it this way
 
