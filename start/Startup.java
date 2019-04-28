@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
 
 public class Startup {
 	public static board.Square go = null;
+	public static int turnCount = 0;
+	public static final int MAX_TURNS = 10;
 	public static input.Player[] players = new input.Player[4];
 	public static input.Player currentPlayer = null;
 	public static boolean passingTurn = true;
@@ -35,10 +37,25 @@ public class Startup {
 	}
 
 	public static void nextTurn() {
+		turnCount++;
+		if (turnCount == players.length * MAX_TURNS) {
+			endGame();
+		}
 		currentPlayer = currentPlayer.next;
 		gui.LogPanel.write("Passing turn to " + currentPlayer.name);
 		gui.BoardPanel.setNextLabel(currentPlayer.name);
 		start.Startup.passingTurn = true;
+	}
+
+	public static void endGame() {
+		input.Player winner = players[0];
+		for (int i = 1; i < players.length; i++) {
+			if (players[i].getFunds() > winner.getFunds()) {
+				winner = players[i];
+			}
+		}
+		JOptionPane.showMessageDialog(gui.MainFrame.frame, "And the winner is... " + winner.name + '!', "Game Over!", JOptionPane.INFORMATION_MESSAGE);
+		System.exit(0);
 	}
 
 	public static void processSquaresFile(String filename) {
