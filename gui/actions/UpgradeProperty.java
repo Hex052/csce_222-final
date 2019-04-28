@@ -22,6 +22,7 @@ public class UpgradeProperty implements ActionListener {
 		}
 		int choice = JOptionPane.showConfirmDialog(square.disp, "Do you want to spend $" + HOUSE_COST + " for a house to be added to " + square.name, "Confirm purchase", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		if (choice == JOptionPane.YES_OPTION) {
+			gui.LogPanel.write(square.owner.name + " spent $" + HOUSE_COST + " to add a house to " + square.name);
 			square.upgrades++;
 			square.owner.charge(HOUSE_COST);
 			square.disp.refresh();
