@@ -7,4 +7,3 @@
 ## TODO
 
 * Log for pass go
-* Change icon

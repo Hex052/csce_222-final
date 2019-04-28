@@ -40,6 +40,7 @@ public class PlayerContainer extends JPanel {
 		changeName.addActionListener(new gui.actions.ChangeName());
 		changeImg = new JButton("Change Icon");
 		changeImg.setName(usr.name);
+		changeImg.addActionListener(new gui.actions.ChangeIcon(usr));
 		imgDisplay = new JLabel(new ImageIcon(img));
 		manageProp = new JButton("Properties");
 		manageProp.setName(usr.name);
